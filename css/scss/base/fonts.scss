@@ -1,0 +1,42 @@
+$baseFontsSrc: '../fonts/';
+@mixin fonts($fonts) {
+  @each $fontName, $variants in $fonts {
+    @each $varianProps in $variants {
+      @font-face {
+        font-family: $fontName;
+        font-style: map-get($varianProps, font-style);
+        font-weight: map-get($varianProps, font-weight);
+        src: url($baseFontsSrc + map-get($varianProps, src)) format(map-get($varianProps, format));
+      }
+    }
+  }
+}
+
+$fonts: (
+  'klavika': ((
+      font-style: normal,
+      font-weight: 400,
+      src: 'klavika-regular-webfont.woff',
+      format: 'woff'
+    ),
+    (
+      font-style: normal,
+      font-weight: 300,
+      src: 'klavika-light-webfont.woff',
+      format: 'woff'
+    ),
+    (
+      font-style: normal,
+      font-weight: 500,
+      src: 'klavika-medium-webfont.woff',
+      format: 'woff'
+    ),
+    (
+      font-style: normal,
+      font-weight: 700,
+      src: 'klavika-bold-webfont.woff',
+      format: 'woff'
+    ))
+);
+
+@include fonts($fonts);

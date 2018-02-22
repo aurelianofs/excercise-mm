@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "exercise",
+  "version": "0.1.0",
+  "devDependencies": {
+    "glob": "^7.0.5",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^2.2.0"
+  }
+}

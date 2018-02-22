@@ -1,0 +1,129 @@
+// ARROWS
+.navigation-arrow {
+  position: absolute;
+  height: 50px;
+  width: 45px;
+  top: calc(50% - 55px);
+  background-position: 10px 0;
+  background-size: 25px 50px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: all .25s ease-in-out;
+  transform: translateX(0);
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.navigation-arrow_left {
+  @extend .navigation-arrow;
+  left: 20px;
+  background-image: url(#{$imgDir}arrow-left.png);
+  &:hover {
+    background-position: 0px 0;
+  }
+}
+
+.navigation-arrow_right {
+  @extend .navigation-arrow;
+  right: 20px;
+  background-image: url(#{$imgDir}arrow-right.png);
+  &:hover {
+    background-position: 20px 0;
+  }
+}
+
+
+body[data-active-slide="1"] {
+  .navigation-arrow_left {
+    @include fadeOut;
+  }
+}
+
+body[data-active-slide="10"] {
+  .navigation-arrow_right {
+    @include fadeOut;
+  }
+}
+
+// DOTS
+.navigation-bottom {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+
+  &::after {
+    content: "Step " attr(data-step) " out of 8 on the path to the digital enlightment";
+    display: inline-block;
+    font-weight: 300;
+    vertical-align: top;
+    margin-left: 10px;
+    color: $color-1;
+    font-size: 14px;
+    line-height: 20px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.8);
+    opacity: 0;
+    transition: opacity .25s ease-in-out;
+  }
+
+  &.active-step::after {
+    opacity: 1;
+  }
+
+  &[data-step="0"],
+  &[data-step="9"] {
+    &::after {
+      content: '';
+    }
+  }
+}
+
+
+.navigation-dots {
+  display: inline-block;
+  vertical-align: top;
+  border: 2px dotted $color-1;
+  font-size: 0;
+}
+
+.navigation-dot {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 14px;
+  width: 24px;
+  text-align: center;
+  padding-top: 1px;
+  line-height: 15px;
+  color: $color-1;
+  height: 16px;
+  font-weight: 300;
+  cursor: pointer;
+  position: relative;
+  &:not(:first-child) {
+    border-left: 2px dotted $color-1;
+  }
+  &:hover {
+    color: rgba($color-1, 0.5);
+  }
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    background-color: transparent;
+    transition: background-color .25s ease-in-out;
+  }
+}
+
+@for $i from 1 through 10 {
+  body[data-active-slide="#{$i}"] {
+    .navigation-dot[href="##{$i}"] {
+      &:before {
+        background-color: $color-1;
+      }
+    }
+  }
+}

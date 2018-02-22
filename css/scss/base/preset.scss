@@ -1,0 +1,43 @@
+a {
+  text-decoration: none;
+  transition: all .25s ease-in-out;
+  &:hover, &:focus {
+    outline: none;
+    text-decoration: none;
+  }
+}
+
+button {
+  border: none;
+  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  &:hover, &:focus {
+    outline: none;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+input:focus, textarea:focus, button:focus {
+  outline: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}

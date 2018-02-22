@@ -1,0 +1,97 @@
+@mixin transition($transition-time: .25s, $transition-property: all, $method: ease-in-out) {
+    transition: $transition-property $transition-time $method;
+}
+
+@mixin selection($bg, $color: #000){
+    &::selection {
+        background: $bg;
+        color: $color;
+    }
+    &::-moz-selection {
+        background: $bg;
+        color: $color;
+    }
+}
+
+@mixin placeholder(){
+    &:-moz-placeholder {
+        @content;
+    }
+    &::-moz-placeholder {
+        @content;
+    } // Firefox 19+
+    &:-ms-input-placeholder {
+        @content;
+    } // Internet Explorer 10+
+    &::-webkit-input-placeholder {
+        @content;
+    } // Safari and Chrome
+}
+
+
+@mixin keyframes($name) {
+  @-webkit-keyframes $name {
+      @content;
+  }
+  @-moz-keyframes $name {
+      @content;
+  }
+  @-o-keyframes $name {
+      @content;
+  }
+  @keyframes $name {
+      @content;
+  }
+}
+
+@mixin fadeIn($transition-time: 0.5s, $extraAnimation: ''){
+	visibility: visible;
+	opacity: 1;
+	transition: opacity $transition-time ease-in-out, visibility 0s linear 0s #{$extraAnimation};
+}
+
+@mixin fadeOut($transition-time: 0.5s, $extraAnimation: ''){
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity $transition-time ease-in-out, visibility 0s linear $transition-time #{$extraAnimation};
+}
+
+@mixin bgImg($url: false, $size: cover, $position: center) {
+  @if $url { background-image: url(#{$imgDir}#{$url}); }
+  background-size: $size;
+  background-position: $position;
+  background-repeat: no-repeat;
+}
+
+@mixin media-breakpoint-down($bp) {
+  @media (max-width: (map-get($breakpoints, $bp) - 1)) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-up($bp) {
+  @media (min-width: map-get($breakpoints, $bp)) {
+    @content;
+  }
+}
+
+/*----------------*/
+/* HELPER CLASSES */
+/*----------------*/
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}

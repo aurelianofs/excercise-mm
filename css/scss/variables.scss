@@ -1,0 +1,25 @@
+/*-------------*/
+/* BREAKPOINTS */
+/*-------------*/
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+/*-------------*/
+/* DIRECTORIES */
+/*-------------*/
+$imgDir: '../images/';
+
+/*-------*/
+/* FONTS */
+/*-------*/
+$font-1: 'klavika', sans-serif;
+// $font-2: 'CircularStd', sans-serif;
+
+/*--------*/
+/* COLORS */
+/*--------*/
+$color-1: #ebede2; // COLOR TEXT WHITE
